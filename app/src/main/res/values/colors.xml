@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="steel_background">#FFD3D3D3</color>
+    <color name="steel_borders">#FFC0C0C0</color>
+
+    <color name="water_background">#FF4169E1</color>
+    <color name="water_borders">#FF7B68EE</color>
+
+    <color name="bug_background">#FF9ACD32</color>
+    <color name="bug_borders">#FF6B8E23</color>
+
+    <color name="dragon_background">#FF7B68EE</color>
+    <color name="dragon_borders">#FF6A5ACD</color>
+
+    <color name="electric_background">#FFFFFF00</color>
+    <color name="electric_borders">#FFFFD700</color>
+
+    <color name="ghost_background">#FF800080</color>
+    <color name="ghost_borders">#FF4B0082</color>
+
+    <color name="fire_background">#FFDC143C</color>
+    <color name="fire_borders">#FFB22222</color>
+
+    <color name="fairy_background">#FFFF88EE</color>
+    <color name="fairy_borders">#FFFFBBEE</color>
+
+    <color name="ice_background">#FF7FFFD4</color>
+    <color name="ice_borders">#FFAFEEEE</color>
+
+    <color name="fighting_background">#FFB22222</color>
+    <color name="fighting_borders">#FF8B0000</color>
+
+    <color name="normal_background">#FFE6E6FA</color>
+    <color name="normal_borders">#FFDCDCDC</color>
+
+    <color name="grass_background">#FF00FF00</color>
+    <color name="grass_borders">#FF32CD32</color>
+
+    <color name="psychic_background">#FFEE82EE</color>
+    <color name="psychic_borders">#FFDDA0DD</color>
+
+    <color name="rock_background">#FFCD853F</color>
+    <color name="rock_borders">#FFD2691E</color>
+
+    <color name="dark_background">#FF708090</color>
+    <color name="dark_borders">#FF2F4F4F</color>
+
+    <color name="ground_background">#FFDEB887</color>
+    <color name="ground_borders">#FFD2B48C</color>
+
+    <color name="poison_background">#FF9370DB</color>
+    <color name="poison_borders">#FF8A2BE2</color>
 </resources>

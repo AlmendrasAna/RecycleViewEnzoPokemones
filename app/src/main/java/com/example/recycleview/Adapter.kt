@@ -1,5 +1,6 @@
 package com.example.recycleview
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,10 +31,24 @@ class Adapter : RecyclerView.Adapter <Adapter.ViewHolder>() {
     }
 
     class ViewHolder(val binding: ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(pokemon: Pokemon){
+        fun bind(pokemon: Pokemon) {
             binding.txtNombre.text = pokemon.nombre
             binding.txtTipo.text = pokemon.tipo
+            ColorPorTipo(pokemon.tipo)
+        }
+
+        private fun ColorPorTipo(type: String) {
+            when (type) {
+                "Water" -> binding.CardPokemones.setCardBackgroundColor(Color.BLUE)
+                "Fire" -> binding.CardPokemones.setCardBackgroundColor(Color.RED)
+                "Bug" -> binding.CardPokemones.setCardBackgroundColor(Color.GREEN)
+                "Grass" -> binding.CardPokemones.setCardBackgroundColor(Color.GREEN)
+                "Normal" -> binding.CardPokemones.setCardBackgroundColor(Color.GRAY)
+                "Grass - Poison" -> binding.CardPokemones.setCardBackgroundColor(Color.GREEN)
+                else -> binding.CardPokemones.setCardBackgroundColor(Color.WHITE) // Color predeterminado si no coincide con ninguna opción.
+            }
         }
     }
+
 
 }
