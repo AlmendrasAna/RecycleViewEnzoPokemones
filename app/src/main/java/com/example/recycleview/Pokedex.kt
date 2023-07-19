@@ -1,4 +1,4 @@
-package com.example.kotlinexamples
+package com.example.recycleview
 
 import com.example.recycleview.Pokemon
 
