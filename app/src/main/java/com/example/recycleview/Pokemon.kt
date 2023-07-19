@@ -1,4 +1,5 @@
 package com.example.recycleview
 
-class Pokemon(val nombre: String, val tipo: String) {
-}
+import java.net.URL
+
+data class Pokemon(val id: String, val nombre : String, val tipo : String, val imgUrl: String)

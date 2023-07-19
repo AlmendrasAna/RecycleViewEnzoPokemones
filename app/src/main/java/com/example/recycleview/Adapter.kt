@@ -2,9 +2,9 @@ package com.example.recycleview
 
 import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.recycleview.databinding.ItemLayoutBinding
 
 class Adapter : RecyclerView.Adapter <Adapter.ViewHolder>() {
@@ -34,6 +34,7 @@ class Adapter : RecyclerView.Adapter <Adapter.ViewHolder>() {
         fun bind(pokemon: Pokemon) {
             binding.txtNombre.text = pokemon.nombre
             binding.txtTipo.text = pokemon.tipo
+            binding.imageView.load(pokemon.imgUrl)
             ColorPorTipo(pokemon.tipo)
         }
 
@@ -44,7 +45,6 @@ class Adapter : RecyclerView.Adapter <Adapter.ViewHolder>() {
                 "Bug" -> binding.CardPokemones.setCardBackgroundColor(Color.GREEN)
                 "Grass" -> binding.CardPokemones.setCardBackgroundColor(Color.GREEN)
                 "Normal" -> binding.CardPokemones.setCardBackgroundColor(Color.GRAY)
-                "Grass - Poison" -> binding.CardPokemones.setCardBackgroundColor(Color.GREEN)
                 else -> binding.CardPokemones.setCardBackgroundColor(Color.WHITE) // Color predeterminado si no coincide con ninguna opción.
             }
         }
