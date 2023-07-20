@@ -1,6 +1,7 @@
 package com.example.recycleview
 
 import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -36,11 +37,13 @@ class Adapter : RecyclerView.Adapter <Adapter.ViewHolder>() {
             binding.txtNombre.text = pokemon.nombre
             binding.txtTipo.text = pokemon.tipo
             binding.imageView.load(pokemon.imgUrl)
+            binding.txtId.text = pokemon.id
             ColorPorTipo(pokemon.tipo)
         }
 
         /*
         private fun ColorPorTipo(type: String) {
+            val gradientDrawable = GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, null)
             when (type) {
                 "Water" -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.water_background))
                 "Fire" -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.fire_background))
@@ -55,10 +58,15 @@ class Adapter : RecyclerView.Adapter <Adapter.ViewHolder>() {
                 "Ice" -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.ice_background))
                 "Fighting" -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.fighting_background))
                 "Psychic" -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.psychic_background))
+                "Rock" -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.rock_background))
+                "Ground" -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.ground_background))
+                "Dark" -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.dark_background))
+                "Poison" -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.poison_background))
 
                 else -> binding.CardPokemones.setCardBackgroundColor(Color.WHITE) // Color predeterminado si no coincide con ninguna opción.
             }
         }
+
         */
         private fun ColorPorTipo(type: String) {
             when  {
@@ -82,6 +90,7 @@ class Adapter : RecyclerView.Adapter <Adapter.ViewHolder>() {
                 else -> binding.CardPokemones.setCardBackgroundColor(Color.WHITE) // Color predeterminado si no coincide con ninguna opción.
             }
         }
+
     }
 
 
