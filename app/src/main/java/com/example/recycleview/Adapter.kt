@@ -1,15 +1,19 @@
 package com.example.recycleview
 
-import android.graphics.Color
+
 import android.graphics.drawable.GradientDrawable
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.recycleview.databinding.ItemLayoutBinding
 
-class Adapter : RecyclerView.Adapter <Adapter.ViewHolder>() {
+class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
     var pokemones = mutableListOf<Pokemon>()
 
@@ -38,7 +42,9 @@ class Adapter : RecyclerView.Adapter <Adapter.ViewHolder>() {
             binding.txtTipo.text = pokemon.tipo
             binding.imageView.load(pokemon.imgUrl)
             binding.txtId.text = pokemon.id
-            ColorPorTipo(pokemon.tipo)
+            Log.e("loll", "dfas")
+            binding.CardPokemones.background = ColorPorTipo(pokemon.tipo)
+            Log.e("loll", "das")
         }
 
         /*
@@ -68,30 +74,60 @@ class Adapter : RecyclerView.Adapter <Adapter.ViewHolder>() {
         }
 
         */
-        private fun ColorPorTipo(type: String) {
-            when  {
-                type.startsWith("water", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.water_background))
-                type.startsWith("fire", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.fire_background))
-                type.startsWith("bug", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.bug_background))
-                type.startsWith("grass", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.grass_background))
-                type.startsWith("steel", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.steel_background))
-                type.startsWith("dragon", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.dragon_background))
-                type.startsWith("normal", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.normal_background))
-                type.startsWith("electric", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.electric_background))
-                type.startsWith("ghost", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.ghost_background))
-                type.startsWith("fairy", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.fairy_background))
-                type.startsWith("ice", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.ice_background))
-                type.startsWith("fighting", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.fighting_background))
-                type.startsWith("psychic", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.psychic_background))
-                type.startsWith("rock", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.rock_background))
-                type.startsWith("dark", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.dark_background))
-                type.startsWith("ground", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.ground_background))
-                type.startsWith("poison", ignoreCase = true) -> binding.CardPokemones.setCardBackgroundColor(ContextCompat.getColor(this.itemView.context,R.color.poison_background))
-                else -> binding.CardPokemones.setCardBackgroundColor(Color.WHITE) // Color predeterminado si no coincide con ninguna opción.
+
+
+        fun ColorPorTipo(type: String): GradientDrawable {
+            var colorInt1 = "#FFB22222".toColorInt()
+            var colorInt2 = "#FFEFE1D1".toColorInt()
+            var colores = mutableListOf<DataClassColores>()
+            colores = Color2.listColor().toMutableList()
+            Log.e("loll", type)
+
+
+            if (type.indexOf("-") != -1) {
+                val color2 = type.substring(type.indexOf("-")+2, type.length)
+                val color1 = type.substring(0, type.indexOf("-")-1)
+
+                for (c in colores) {
+
+                    if (color1.equals(c.nombreColor)) {
+                        colorInt1 = c.colorLong
+                    }
+
+                    if (color2.equals(c.nombreColor)) {
+                        colorInt2 = c.colorLong
+                    }
+                }
+            } else {
+                for (c in colores) {
+
+                    if (type.equals(c.nombreColor)) {
+                        colorInt1 = c.colorLong
+                        colorInt2 = c.colorLong
+                    }
+                }
             }
+
+
+            var gfgGradient = GradientDrawable(
+                GradientDrawable.Orientation.LEFT_RIGHT, intArrayOf(colorInt1, colorInt2)
+            )
+
+
+            return gfgGradient
         }
 
+
     }
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
